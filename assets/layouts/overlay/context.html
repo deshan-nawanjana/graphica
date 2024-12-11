@@ -1,0 +1,18 @@
+<div
+  class="context"
+  v-if="context.items"
+  :style="styleContext()">
+  <div
+    :class="item.type === 'separator' ? 'context-separator' : 'context-item'"
+    :data-disabled="item.disabled"
+    v-for="item in context.items"
+    v-if="!item.hidden"
+    @click="item.event() || null">
+    <div class="context-item-label" v-if="item.label">
+      {{item.label}}
+    </div>
+    <div class="context-item-shortcut" v-if="item.shortcut">
+      {{item.shortcut}}
+    </div>
+  </div>
+</div>

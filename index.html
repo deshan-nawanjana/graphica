@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content="Online Graphic Designing Tool">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- open graph tags -->
+  <meta property="og:title" content="Graphica">
+  <meta property="og:description" content="Online Graphic Designing Tool">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deshan-nawanjana.github.io/graphica/">
+  <meta property="og:image" content="https://deshan-nawanjana.github.io/graphica/assets/images/splash.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- twitter card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Graphica">
+  <meta name="twitter:description" content="Online Graphic Designing Tool">
+  <meta name="twitter:image" content="https://deshan-nawanjana.github.io/graphica/assets/images/splash.png">
+  <!-- canonical -->
+  <link rel="canonical" href="https://deshan.lk/projects/graphica" />
+  <!-- manifest -->
+  <link rel="manifest" href="./assets/manifest.json">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./index.png" type="image/png">
+  <!-- preload : fonts -->
+  <link rel="preload" href="./assets/fonts/Ubuntu/Ubuntu-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/fonts/Ubuntu/Ubuntu-Medium.ttf" as="font" type="font/ttf" crossorigin>
+  <!-- preload : images -->
+  <link rel="preload" href="./assets/images/splash.png" as="image" type="image/png" />
+  <link rel="preload" href="./assets/images/background.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/add.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/close.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/up.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/down.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/visibility-on.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/visibility-off.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/move.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/hand.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/zoom-fit.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="./assets/images/zoom-actual.svg" as="image" type="image/svg+xml" />
+  <!-- style -->
+  <link rel="stylesheet" href="./assets/fonts/fonts.css">
+  <link rel="stylesheet" href="./index.css">
+  <!-- libraries -->
+  <script src="./assets/libraries/vue.min.js"></script>
+  <script src="./assets/libraries/image.min.js"></script>
+  <script src="./assets/libraries/jszip.min.js"></script>
+  <!-- script -->
+  <script src="./index.js" type="module" defer></script>
+  <!-- page title -->
+  <title>Graphica</title>
+</head>
+<body>
+  <!-- screen limit -->
+  <div class="screen">
+    <div class="screen-message">
+      Sorry, Graphica required at least
+      <br>
+      1100 x 500 of your screen.
+    </div>
+  </div>
+  <!-- splash -->
+  <div class="splash">
+    <div class="splash-container">
+      <div class="splash-image"></div>
+      <div class="splash-content">
+        <div class="splash-title">
+          Graphica
+        </div>
+        <div class="splash-description">
+          Graphica is a powerful online graphic design tool offering a wide range of features, including color mixing, blending, shadow effects, and more. It allows you to export your creations in high resolution. Additionally, Graphica introduces its own editable document format, enabling you to save and revisit your work for future editing seamlessly.
+        </div>
+        <div class="splash-loading"></div>
+      </div>
+    </div>
+  </div>
+  <!-- app container -->
+  <div
+    id="app"
+    v-if="ready"
+    :data-ready="ready"
+    @contextmenu="onContextOpen">
+    <div class="header">
+      <div data-path="layouts/overlay/canvas"></div>
+      <div data-path="layouts/overlay/export"></div>
+      <div data-path="layouts/overlay/context"></div>
+      <div data-path="layouts/header/menu"></div>
+      <div data-path="layouts/tools/cursor"></div>
+    </div>
+    <div class="content">
+      <!-- listings -->
+      <div class="listings">
+        <div data-path="layouts/listings/assets"></div>
+        <div data-path="layouts/listings/layers"></div>
+      </div>
+      <!-- workspace -->
+      <div data-path="layouts/workspace"></div>
+      <!-- options -->
+      <div class="options">
+        <fieldset
+          class="options-inner"
+          @input="saved = false"
+          v-if="layer">
+          <div data-path="layouts/options/general"></div>
+          <div data-path="layouts/options/background"></div>
+          <div data-path="layouts/options/text"></div>
+          <div data-path="layouts/options/border"></div>
+          <div data-path="layouts/options/shadow"></div>
+          <div data-path="layouts/options/filters"></div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="footer">
+      <div data-path="layouts/tools/zoom"></div>
+    </div>
+  </div>
+</body>
+</html>

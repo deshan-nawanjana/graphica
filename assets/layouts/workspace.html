@@ -1,0 +1,43 @@
+<div
+  class="workspace"
+  :style="styleWorkspace()"
+  @mousedown="onMouseDown"
+  @mousemove="onMouseMove"
+  @mouseup="onMouseUp"
+  @mouseleave="onMouseUp"
+  data-id="workspace"
+  data-type="workspace"
+  :data-drop-active="drag.target === 'workspace'">
+  <div
+    class="workspace-grid"
+    :style="styleWorkspaceGrid()">
+    <div
+      class="workspace-canvas"
+      :style="styleCanvas()">
+      <div
+        class="workspace-layer"
+        v-for="(item, index) in layers"
+        :data-layer-id="item.id"
+        :style="styleLayer(index, 'outer')">
+        <div
+          class="workspace-layer-object"
+          :style="styleLayer(index, 'inner')">
+          <div
+            class="workspace-layer-text"
+            v-if="item.mode === 'text'"
+            v-html="item.text.content">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="workspace-transform"
+      :style="styleTransform()">
+      <div class="workspace-transform-bound"
+        v-if="layer"
+        v-html="layer.mode === 'text' ? layer.text.content : ''"
+        :style="styleTransformBound()">
+      </div>
+    </div>
+  </div>
+</div>

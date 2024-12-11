@@ -1,0 +1,14 @@
+<div class="cursor-tools">
+  <div
+    class="cursor-tools-item"
+    data-icon="move"
+    :data-active="workspace.tool === 'move' && !workspace.hand"
+    @click="workspace.tool = 'move'">
+  </div>
+  <div
+    class="cursor-tools-item"
+    data-icon="hand"
+    :data-active="workspace.tool === 'hand' || workspace.hand"
+    @click="workspace.tool = 'hand'">
+  </div>
+</div>

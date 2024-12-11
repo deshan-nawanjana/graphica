@@ -1,0 +1,26 @@
+<div class="menu" @click="onContextOpen">
+  <div
+    class="menu-item ctx-trigger"
+    data-type="file-menu"
+    :data-active="context.type === 'file-menu'">
+    File
+  </div>
+  <div
+    class="menu-item ctx-trigger"
+    data-type="edit-menu"
+    :data-active="context.type === 'edit-menu'">
+    Edit
+  </div>
+  <div
+    class="menu-item ctx-trigger"
+    data-type="view-menu"
+    :data-active="context.type === 'view-menu'">
+    View
+  </div>
+  <div
+    class="menu-item ctx-trigger"
+    data-type="help-menu"
+    :data-active="context.type === 'help-menu'">
+    Help
+  </div>
+</div>

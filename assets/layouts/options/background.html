@@ -1,0 +1,158 @@
+<div class="options-section" v-if="layer.mode === 'surface' || layer.mode === 'object'">
+  <div class="listings-title">
+    Background
+  </div>
+  <div class="options-content">
+    <!-- type -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Type
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.background.type">
+          <option value="transparent">Transparent</option>
+          <option value="color">Color</option>
+          <option value="gradient">Gradient</option>
+          <option value="texture">Texture</option>
+        </select>
+      </div>
+    </div>
+    <!-- color -->
+    <div class="options-item" v-if="layer.background.type === 'color'">
+      <div class="options-item-label">
+        Color
+      </div>
+      <div class="options-item-control color">
+        <input type="text" v-model="layer.background.data.color.color" maxlength="7" spellcheck="false">
+        <input type="color" v-model="layer.background.data.color.color">
+      </div>
+    </div>
+    <!-- opacity -->
+    <div class="options-item" v-if="layer.background.type === 'color'">
+      <div class="options-item-label">
+        Opacity
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.background.data.color.opacity" min="0" max="100">
+        <input type="range" v-model="layer.background.data.color.opacity" min="0" max="100">
+      </div>
+    </div>
+    <!-- gradient mode -->
+    <div class="options-item" v-if="layer.background.type === 'gradient'">
+      <div class="options-item-label">
+        Gradient Mode
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.background.data.gradient.type">
+          <option value="linear">Linear</option>
+          <option value="radial">Radial</option>
+        </select>
+      </div>
+    </div>
+    <!-- gradient angle -->
+    <div class="options-item"
+      v-if="layer.background.type === 'gradient' && layer.background.data.gradient.type === 'linear'">
+      <div class="options-item-label">
+        Rotation
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.background.data.gradient.angle" min="0" max="360">
+        <input type="range" v-model="layer.background.data.gradient.angle" min="0" max="360">
+      </div>
+    </div>
+    <!-- gradient colors -->
+    <div class="options-item" v-if="layer.background.type === 'gradient'">
+      <div class="options-item-label">
+        Colors
+      </div>
+      <div class="options-item-control-list">
+        <button @click="addGradientColor">
+          Add Color
+        </button>
+        <div class="options-item-control color" v-for="(item, i) in layer.background.data.gradient.colors">
+          <input type="text" v-model="item.color" maxlength="7" spellcheck="false">
+          <input type="color" v-model="item.color">
+          <input type="range" v-model="item.opacity" min="0" max="100">
+          <button data-icon="up" @click="moveGradientColor(i, -1)" :disabled="i === 0">
+          </button>
+          <button data-icon="down" @click="moveGradientColor(i, 1)"
+            :disabled="i === layer.background.data.gradient.colors.length - 1">
+          </button>
+          <button data-icon="close" @click="deleteGradientColor(i)">
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- texture -->
+    <div class="options-item" v-if="layer.background.type === 'texture'">
+      <div class="options-item-label">
+        Texture
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.background.data.texture.id">
+          <option value="none">None</option>
+          <option :value="asset.id" v-for="asset in assets" v-if="asset.type === 'image'">
+            {{asset.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- texture size -->
+    <div class="options-item" v-if="layer.background.data.texture.id !== 'none' && layer.background.type === 'texture'">
+      <div class="options-item-label">
+        Size
+      </div>
+      <div class="options-item-control-list">
+        <div class="options-item-control">
+          <select v-model="layer.background.data.texture.size.type">
+            <option value="auto">Auto</option>
+            <option value="contain">Contain</option>
+            <option value="cover">Cover</option>
+            <option value="stretch">Stretch</option>
+            <option value="custom">Custom Size</option>
+          </select>
+        </div>
+        <div class="options-item-control" v-if="layer.background.data.texture.size.type === 'custom'">
+          <input type="number" v-model="layer.background.data.texture.size.x">
+          <input type="number" v-model="layer.background.data.texture.size.y">
+        </div>
+      </div>
+    </div>
+    <!-- texture repeat -->
+    <div class="options-item" v-if="layer.background.data.texture.id !== 'none' && layer.background.type === 'texture'">
+      <div class="options-item-label">
+        Repeat
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.background.data.texture.repeat">
+          <option value="repeat">Repeat Both Sides</option>
+          <option value="repeat-x">Repeat X</option>
+          <option value="repeat-Y">Repeat Y</option>
+          <option value="no-repeat">No Repeat</option>
+        </select>
+      </div>
+    </div>
+    <!-- texture position -->
+    <div class="options-item" v-if="layer.background.data.texture.id !== 'none' && layer.background.type === 'texture'">
+      <div class="options-item-label">
+        Position
+      </div>
+      <div class="options-item-control-list">
+        <div class="options-item-control">
+          <select v-model="layer.background.data.texture.position.type">
+            <option value="center">Center</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+            <option value="top">Top</option>
+            <option value="bottom">Bottom</option>
+            <option value="custom">Custom Position</option>
+          </select>
+        </div>
+        <div class="options-item-control" v-if="layer.background.data.texture.position.type === 'custom'">
+          <input type="number" v-model="layer.background.data.texture.position.x">
+          <input type="number" v-model="layer.background.data.texture.position.y">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

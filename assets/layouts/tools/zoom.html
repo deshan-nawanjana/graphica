@@ -1,0 +1,17 @@
+<div class="zoom-tools">
+  <div class="zoom-tools-value">
+    {{workspace.zoom}}%
+  </div>
+  <input
+    type="range"
+    class="secondary"
+    v-model="workspace.zoom"
+    min="10"
+    max="500"
+  />
+  <div
+    class="zoom-tools-switch"
+    :data-state="parseInt(workspace.zoom) === 100 ? 'actual' : 'fit'"
+    @click="switchZoomMode">
+  </div>
+</div>

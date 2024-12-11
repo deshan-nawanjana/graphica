@@ -1,0 +1,77 @@
+<div class="options-section">
+  <div class="listings-title">
+    Filters
+  </div>
+  <div class="options-content">
+    <!-- blur -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Blur
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.filters.blur" min="0" max="200">
+        <input type="range" v-model="layer.filters.blur" min="0" max="200">
+      </div>
+    </div>
+    <!-- brightness -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Brightness
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.filters.brightness" min="0" max="200">
+        <input type="range" v-model="layer.filters.brightness" min="0" max="200">
+      </div>
+    </div>
+    <!-- contrast -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Contrast
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.filters.contrast" min="0" max="200">
+        <input type="range" v-model="layer.filters.contrast" min="0" max="200">
+      </div>
+    </div>
+    <!-- grayscale -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Grayscale
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.filters.grayscale" min="0" max="100">
+        <input type="range" v-model="layer.filters.grayscale" min="0" max="100">
+      </div>
+    </div>
+    <!-- hue -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Hue
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.filters.hue" min="0" max="360">
+        <input type="range" v-model="layer.filters.hue" min="0" max="360">
+      </div>
+    </div>
+    <!-- saturation -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Saturation
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.filters.saturation" min="0" max="400">
+        <input type="range" v-model="layer.filters.saturation" min="0" max="400">
+      </div>
+    </div>
+    <!-- invert -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Invert
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.filters.invert" min="0" max="100">
+        <input type="range" v-model="layer.filters.invert" min="0" max="100">
+      </div>
+    </div>
+  </div>
+</div>

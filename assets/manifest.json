@@ -1,0 +1,26 @@
+{
+  "name": "Graphica",
+  "short_name": "Graphica",
+  "start_url": "/graphica/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "./images/icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./images/icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "description": "Online Graphic Designing Tool",
+  "background_color": "#222222",
+  "theme_color": "#0066cc",
+  "lang": "en",
+  "categories": [
+    "productivity"
+  ]
+}

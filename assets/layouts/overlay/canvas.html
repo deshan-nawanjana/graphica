@@ -1,0 +1,39 @@
+<div
+  class="popup-backdrop"
+  :data-open="popups.canvas.open.toString()">
+  <div class="popup resize-canvas">
+    <div class="listings-title">
+      Resize Canvas
+    </div>
+    <div class="options-content">
+      <!-- width -->
+      <div class="options-item">
+        <div class="options-item-label">
+          Width
+        </div>
+        <div class="options-item-control range">
+          <input type="number" v-model="popups.canvas.width">
+          <input type="range" v-model="popups.canvas.width" min="5" max="4000">
+        </div>
+      </div>
+      <!-- height -->
+      <div class="options-item">
+        <div class="options-item-label">
+          Height
+        </div>
+        <div class="options-item-control range">
+          <input type="number" v-model="popups.canvas.height">
+          <input type="range" v-model="popups.canvas.height" min="5" max="4000">
+        </div>
+      </div>
+      <div class="options-item buttons">
+        <button @click="closeCanvasPopup(false)">
+          Cancel
+        </button>
+        <button @click="closeCanvasPopup(true)">
+          Resize
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

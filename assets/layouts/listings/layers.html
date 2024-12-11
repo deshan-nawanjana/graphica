@@ -1,0 +1,49 @@
+<div class="listings layers">
+  <div class="listings-title">
+    <div class="listings-title-text">
+      Layers
+    </div>
+    <div
+      class="listings-title-button ctx-trigger"
+      data-type="create-layer"
+      @click="onContextOpen">
+    </div>
+  </div>
+  <div
+    class="listings-content layers"
+    data-type="layers-container">
+    <div
+      class="listings-item"
+      draggable="true"
+      v-for="(item, index) in layers"
+      :data-active="currentLayer === index"
+      :data-id="item.id"
+      :data-index="index"
+      data-type="layer"
+      :data-drop-active="drag.target === item.id">
+      <div
+        class="listings-item-visibility"
+        :data-active="item.visible"
+        @click="item.visible = !item.visible"
+        data-no-context>
+      </div>
+      <div
+        class="listings-item-preview"
+        @click="currentLayer = index">
+        <div
+          class="listings-item-preview-content"
+          :style="styleLayer(index, 'preview')">
+          {{item.mode === "text" ? "T" : ""}}
+        </div>
+      </div>
+      <div
+        class="listings-item-name"
+        @click="currentLayer = index">
+        {{item.name}} {{
+          item.mode === "text" && item.text.content.trim()
+            ? `(${item.text.content.trim()})` : ""
+        }}
+      </div>
+    </div>
+  </div>
+</div>

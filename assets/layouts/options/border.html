@@ -1,0 +1,90 @@
+<div class="options-section" v-if="layer.mode === 'object'">
+  <div class="listings-title">
+    Border
+  </div>
+  <div class="options-content">
+    <!-- border type -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Border Type
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.border.type">
+          <option value="none">No Border</option>
+          <option value="solid">Solid</option>
+          <option value="dashed">Dashed</option>
+          <option value="dotted">Dotted</option>
+          <option value="double">Double</option>
+          <option value="groove">Groove</option>
+          <option value="ridge">Ridge</option>
+          <option value="inset">Inset</option>
+          <option value="outset">Outset</option>
+        </select>
+      </div>
+    </div>
+    <!-- border color -->
+    <div class="options-item" v-if="layer.border.type !== 'none'">
+      <div class="options-item-label">
+        Border Color
+      </div>
+      <div class="options-item-control color">
+        <input type="text" v-model="layer.border.color" maxlength="7" spellcheck="false">
+        <input type="color" v-model="layer.border.color">
+      </div>
+    </div>
+    <!-- opacity -->
+    <div class="options-item" v-if="layer.border.type !== 'none'">
+      <div class="options-item-label">
+        Border Opacity
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.border.opacity">
+        <input type="range" v-model="layer.border.opacity" min="0" max="100">
+      </div>
+    </div>
+    <!-- border size -->
+    <div class="options-item" v-if="layer.border.type !== 'none'">
+      <div class="options-item-label">
+        Border Size
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.border.size">
+        <input type="range" v-model="layer.border.size" min="0" max="50">
+      </div>
+    </div>
+    <!-- border radius -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Radius Type
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.radius.type">
+          <option value="none">No Radius</option>
+          <option value="all">All Corners</option>
+          <option value="full">Full Radius</option>
+          <option value="each">Each Corner</option>
+        </select>
+      </div>
+    </div>
+    <div class="options-item" v-if="layer.radius.type === 'all'">
+      <div class="options-item-label">
+        Radius Size
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.radius.sides.all">
+        <input type="range" v-model="layer.radius.sides.all" min="0" max="300">
+      </div>
+    </div>
+    <div class="options-item" v-if="layer.radius.type === 'each'">
+      <div class="options-item-label">
+        Radius Sizes
+      </div>
+      <div class="options-item-control">
+        <input type="number" v-model="layer.radius.sides.each[0]">
+        <input type="number" v-model="layer.radius.sides.each[1]">
+        <input type="number" v-model="layer.radius.sides.each[2]">
+        <input type="number" v-model="layer.radius.sides.each[3]">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="listings assets">
+  <div class="listings-title">
+    <div class="listings-title-text">
+      Assets
+    </div>
+    <div
+      class="listings-title-button"
+      @click="importAssets()">
+    </div>
+  </div>
+  <div
+    class="listings-content assets"
+    data-type="assets-container">
+    <div
+      class="listings-item"
+      draggable="true"
+      v-for="(item, index) in assets"
+      @click="currentAsset = index"
+      :data-active="currentAsset === index"
+      :data-id="item.id"
+      :data-index="index"
+      :data-type="item.type"
+      :data-drop-active="drag.target === item.id"
+      :tabindex="index">
+      <div
+        class="listings-item-preview">
+        <div
+          class="listings-item-preview-content"
+          :style="styleAsset(item)">
+          {{item.type === "font" ? "A" : ""}}
+        </div>
+      </div>
+      <div
+        class="listings-item-name">
+        {{item.name}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div
+  class="popup-backdrop"
+  :data-open="popups.export.open.toString()">
+  <div class="popup export-image">
+    <div class="listings-title">
+      Export as Image
+    </div>
+    <fieldset
+      class="options-content"
+      :disabled="popups.export.busy"
+      @input="inputExportPopup">
+      <!-- width -->
+      <div class="options-item">
+        <div class="options-item-label">
+          Width
+        </div>
+        <div class="options-item-control range" data-key="width">
+          <input type="number" v-model="popups.export.width">
+          <input type="range" v-model="popups.export.width" min="5" max="4000">
+        </div>
+      </div>
+      <!-- height -->
+      <div class="options-item">
+        <div class="options-item-label">
+          Height
+        </div>
+        <div class="options-item-control range" data-key="height">
+          <input type="number" v-model="popups.export.height">
+          <input type="range" v-model="popups.export.height" min="5" max="4000">
+        </div>
+      </div>
+      <div class="options-item buttons">
+        <button
+          :disabled="popups.export.busy"
+          @click="closeExportPopup">
+          Close
+        </button>
+        <button 
+          :disabled="popups.export.busy"
+          @click="exportAsImage">
+          Export
+        </button>
+      </div>
+    </fieldset>
+  </div>
+</div>

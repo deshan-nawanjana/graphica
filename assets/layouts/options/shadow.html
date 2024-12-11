@@ -1,0 +1,70 @@
+<div class="options-section" v-if="layer.mode === 'object'">
+  <div class="listings-title">
+    Shadow
+  </div>
+  <div class="options-content">
+    <!-- shadow type -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Type
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.shadow.type">
+          <option value="none">No Shadow</option>
+          <option value="outer">Outer Shadow</option>
+          <option value="inset">Inner Shadow</option>
+        </select>
+      </div>
+    </div>
+    <!-- shadow color -->
+    <div class="options-item" v-if="layer.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Color
+      </div>
+      <div class="options-item-control color">
+        <input type="text" v-model="layer.shadow.color" maxlength="7" spellcheck="false">
+        <input type="color" v-model="layer.shadow.color">
+      </div>
+    </div>
+    <!-- shadow opacity -->
+    <div class="options-item" v-if="layer.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Opacity
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.shadow.opacity">
+        <input type="range" v-model="layer.shadow.opacity" min="0" max="100">
+      </div>
+    </div>
+    <!-- shadow radius -->
+    <div class="options-item" v-if="layer.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Radius
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.shadow.radius">
+        <input type="range" v-model="layer.shadow.radius" min="0" max="300">
+      </div>
+    </div>
+    <!-- shadow spread -->
+    <div class="options-item" v-if="layer.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Spread
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.shadow.spread">
+        <input type="range" v-model="layer.shadow.spread" min="0" max="300">
+      </div>
+    </div>
+    <!-- offset -->
+    <div class="options-item" v-if="layer.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Offset
+      </div>
+      <div class="options-item-control">
+        <input type="number" v-model="layer.shadow.offset.x">
+        <input type="number" v-model="layer.shadow.offset.y">
+      </div>
+    </div>
+  </div>
+</div>

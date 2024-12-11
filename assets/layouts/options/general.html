@@ -1,0 +1,84 @@
+<div class="options-section">
+  <div class="listings-title">
+    General
+  </div>
+  <div class="options-content">
+    <!-- layer name -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Layer Name
+      </div>
+      <div class="options-item-control">
+        <input type="text" v-model="layer.name">
+      </div>
+    </div>
+    <!-- dimensions -->
+    <div class="options-item" v-if="layer.mode === 'object'">
+      <div class="options-item-label">
+        Dimensions
+      </div>
+      <div class="options-item-control">
+        <input type="number" v-model="layer.dimensions.width">
+        <input type="number" v-model="layer.dimensions.height">
+      </div>
+    </div>
+    <!-- position -->
+    <div class="options-item" v-if="layer.mode === 'object' || layer.mode === 'text'">
+      <div class="options-item-label">
+        Position
+      </div>
+      <div class="options-item-control">
+        <input type="number" v-model="layer.position.x">
+        <input type="number" v-model="layer.position.y">
+      </div>
+    </div>
+    <!-- rotation -->
+    <div class="options-item" v-if="layer.mode === 'object' || layer.mode === 'text'">
+      <div class="options-item-label">
+        Rotation
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.rotation">
+        <input type="range" v-model="layer.rotation" min="0" max="360">
+      </div>
+    </div>
+    <!-- blend mode -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Blent Mode
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.blend">
+          <option value="normal">Normal</option>
+          <option value="multiply">Multiply</option>
+          <option value="screen">Screen</option>
+          <option value="overlay">Overlay</option>
+          <option value="darken">Darken</option>
+          <option value="lighten">Lighten</option>
+          <option value="color-dodge">Color Dodge</option>
+          <option value="color-burn">Color Burn</option>
+          <option value="hard-light">Hard Light</option>
+          <option value="soft-light">Soft Light</option>
+          <option value="difference">Difference</option>
+          <option value="exclusion">Exclusion</option>
+          <option value="hue">Hue</option>
+          <option value="saturation">Saturation</option>
+          <option value="color">Color</option>
+          <option value="luminosity">Luminosity</option>
+          <option value="plus-darker">Plus Darker</option>
+          <option value="plus-lighter">Plus Lighter</option>
+        </select>
+      </div>
+    </div>
+    <!-- opacity -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Opacity
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.opacity">
+        <input type="range" v-model="layer.opacity" min="0" max="100">
+      </div>
+    </div>
+  </div>
+</div>

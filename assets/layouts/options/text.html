@@ -1,0 +1,125 @@
+<div class="options-section" v-if="layer.mode === 'text'">
+  <div class="listings-title">
+    Text
+  </div>
+  <div class="options-content">
+    <!-- content -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Content
+      </div>
+      <div class="options-item-control">
+        <textarea v-model="layer.text.content" spellcheck="false" placeholder="Type your text here..."></textarea>
+      </div>
+    </div>
+    <!-- align -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Alignment
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.text.align">
+          <option value="left">Left</option>
+          <option value="right">Right</option>
+          <option value="center">Center</option>
+        </select>
+      </div>
+    </div>
+    <!-- size -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Font Size
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.text.size" min="0">
+        <input type="range" v-model="layer.text.size" min="0" max="250">
+      </div>
+    </div>
+    <!-- family -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Font Family
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.text.family">
+          <option value="none">None</option>
+          <option :value="asset.id" v-for="asset in assets" v-if="asset.type === 'font'">
+            {{asset.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- color -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Color
+      </div>
+      <div class="options-item-control color">
+        <input type="text" v-model="layer.text.color" maxlength="7" spellcheck="false">
+        <input type="color" v-model="layer.text.color">
+      </div>
+    </div>
+    <!-- opacity -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Opacity
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.text.opacity" min="0" max="100">
+        <input type="range" v-model="layer.text.opacity" min="0" max="100">
+      </div>
+    </div>
+    <!-- shadow type -->
+    <div class="options-item">
+      <div class="options-item-label">
+        Shadow Type
+      </div>
+      <div class="options-item-control">
+        <select v-model="layer.text.shadow.type">
+          <option value="none">No Shadow</option>
+          <option value="outer">Outer Shadow</option>
+        </select>
+      </div>
+    </div>
+    <!-- shadow color -->
+    <div class="options-item" v-if="layer.text.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Shadow Color
+      </div>
+      <div class="options-item-control color">
+        <input type="text" v-model="layer.text.shadow.color" maxlength="7" spellcheck="false">
+        <input type="color" v-model="layer.text.shadow.color">
+      </div>
+    </div>
+    <!-- shadow opacity -->
+    <div class="options-item" v-if="layer.text.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Shadow Opacity
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.text.shadow.opacity">
+        <input type="range" v-model="layer.text.shadow.opacity" min="0" max="100">
+      </div>
+    </div>
+    <!-- shadow radius -->
+    <div class="options-item" v-if="layer.text.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Shadow Radius
+      </div>
+      <div class="options-item-control range">
+        <input type="number" v-model="layer.text.shadow.radius">
+        <input type="range" v-model="layer.text.shadow.radius" min="0" max="300">
+      </div>
+    </div>
+    <!-- offset -->
+    <div class="options-item" v-if="layer.text.shadow.type !== 'none'">
+      <div class="options-item-label">
+        Shadow Offset
+      </div>
+      <div class="options-item-control">
+        <input type="number" v-model="layer.text.shadow.offset.x">
+        <input type="number" v-model="layer.text.shadow.offset.y">
+      </div>
+    </div>
+  </div>
+</div>
