@@ -55,7 +55,7 @@ window.addEventListener("keydown", event => {
   } else if (key === "F2") {
     // show github
     common.github()
-  } else if (key === "F11" && !document.fullscreenElement) {
+  } else if (key === "F11") {
     // switch fullscreen
     common.switchFullscreen()
   } else if (char === "0" && isCtrl && !isAlt) {
